@@ -16,6 +16,7 @@ public class Cliente {
     private int edad;
     private String direccion;
     private int sueldo;
+    private String numeroTelefono;
 
     public String getName() {
         return name;

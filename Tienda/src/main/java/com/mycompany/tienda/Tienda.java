@@ -3,6 +3,10 @@
  */
 
 package com.mycompany.tienda;
+import Decorator.CorreoNotificacion;
+import Decorator.MecanismoBaseNotificacion;
+import Decorator.Notificacion;
+import Decorator.SMSNotificacion;
 import Facade.CanalVirtualFacade;
 import factory.Factory;
 import interfaces.Tarjeta;
@@ -42,6 +46,15 @@ public class Tienda {
         } else {
             System.out.println("Opción no válida");
         }
+        
+        Notificacion newNoti = new MecanismoBaseNotificacion("notifica");
+        newNoti.enviarNotificacion();
+        
+        newNoti = new CorreoNotificacion(newNoti);
+        newNoti.enviarNotificacion();
+        
+        newNoti = new SMSNotificacion(newNoti);
+        newNoti.enviarNotificacion();
     }
     
 }
